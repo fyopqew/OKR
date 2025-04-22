@@ -46,7 +46,6 @@ exports.updateCar = async (req, res) => {
     const carIndex = cars.findIndex(car => car.id === id);
     if (carIndex === -1) return res.status(404).send('Автомобиль не найден');
 
-    // Обновляем данные автомобиля
     cars[carIndex] = { ...cars[carIndex], ...updatedCar };
     await dbService.writeDB(cars);
     res.send('Информация об автомобиле обновлена');
@@ -68,7 +67,6 @@ exports.updatePrice = async (req, res) => {
     const carIndex = cars.findIndex(car => car.id === id);
     if (carIndex === -1) return res.status(404).send('Автомобиль не найден');
 
-    // Изменяем только цену
     cars[carIndex].price = price;
     await dbService.writeDB(cars);
     res.send('Цена автомобиля обновлена');
